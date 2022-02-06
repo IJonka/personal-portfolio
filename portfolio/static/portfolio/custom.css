@@ -1,0 +1,68 @@
+.navbar-nav .nav-link {
+    color: rgba(0,0,0,1) !important;
+}
+
+.navbar-nav .nav-link:hover {
+    color: rgba(0,0,0,.5) !important;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.slider {
+    z-index: 9;
+    width: 1100px;
+    height: 500px;
+    overflow: hidden;
+    margin: 0 0 7px;
+    position: relative;
+ }
+ .slider ul, .slider li {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+ }
+ .slider ul {
+    width: 9999px;
+ }
+ .slider ul li {
+    list-style-type: none;
+    float: left;
+    width: 1100px;
+    height: 500px;
+ }
+ .slider .nav {
+    position: absolute;
+    left: 15px;
+    bottom: 12px;
+ }
+ .slider .nav span {
+    opacity: 0.9;
+    background: rgb(178, 43, 15);
+    margin: 0 8px 40px 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    overflow: hidden;
+    display: block;
+    float: left;
+    box-shadow: 0 1px 2px #000;
+ }
+ .slider .nav span.on {
+    background: white;
+ }
+
+#blogtitle {
+    font-size: 6rem;
+}
+
+@media (min-width: 992px) {
+    #hometext {
+        font-size: 3rem;
+    }
+    #blogdetailtitle {
+        font-size: 5rem;
+    }
+}

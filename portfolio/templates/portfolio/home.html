@@ -1,0 +1,84 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+    {% load static %}
+<div class="row justify-content-center mb-1">
+  <div class="col-md-9 text-center">
+    <br>
+    <h1 id="hometext" class="font-weight-bold me-2">Welcome to my profile-portfolio</h1>
+  </div>
+</div>
+
+<br>
+<!-- Слайдер -->
+
+  <div class="slider">
+  	<ul>
+  		<li><img src="/static/portfolio/dream.jpg" alt=""></li>
+  		<li><img src="/static/portfolio/dream-2.jpg" alt=""></li>
+  		<li><img src="/static/portfolio/dream-3.jpg" alt=""></li>
+  		<li><img src="/static/portfolio/dream-4.jpg" alt=""></li>
+  	</ul>
+  </div>
+
+<div class="row justify-content-center mb-3">
+  <div class="col-md-9 text-center"
+    <h1 id="hometext" class="font-weight-bold">Javohir Ibragimov is the future best
+    Python developer in the world. He will fulfill his dream of going to Silicon Valley✨</h1>
+    <br>
+  </div>
+</div>
+
+<h3 class="mt-5">A Gang of Loud Villains</h3>
+<hr>
+
+<div class="row">
+  {% for projects in projects %}
+  <div class="col-lg-4 col-md-6">
+
+    {% if projects.url %}
+      <a href="{{ projects.url }}">
+        <img src="{{ projects.image.url }}" class="img-fluid mb-2">
+      </a>
+      {% else %}
+
+      <img src="{{ projects.image.url }}" class="img-fluid mb-2">
+      {% endif %}
+      <h2>{{ projects.title }}</h2>
+      <p>{{ projects.description }}</p>
+
+  </div>
+  {% endfor %}
+</div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+ $(".slider").each(function () { // обрабатываем каждый слайдер
+  var obj = $(this);
+  $(obj).append("<div class='nav'></div>");
+  $(obj).find("li").each(function () {
+   $(obj).find(".nav").append("<span rel='"+$(this).index()+"'></span>"); // добавляем блок навигации
+   $(this).addClass("slider"+$(this).index());
+  });
+  $(obj).find("span").first().addClass("on"); // делаем активным первый элемент меню
+ });
+});
+function sliderJS (obj, sl) { // slider function
+ var ul = $(sl).find("ul"); // находим блок
+ var bl = $(sl).find("li.slider"+obj); // находим любой из элементов блока
+ var step = $(bl).width(); // ширина объекта
+ $(ul).animate({marginLeft: "-"+step*obj}, 500); // 500 это скорость перемотки
+}
+$(document).on("click", ".slider .nav span", function() { // slider click navigate
+ var sl = $(this).closest(".slider"); // находим, в каком блоке был клик
+ $(sl).find("span").removeClass("on"); // убираем активный элемент
+ $(this).addClass("on"); // делаем активным текущий
+ var obj = $(this).attr("rel"); // узнаем его номер
+ sliderJS(obj, sl); // слайдим
+ return false;
+});
+</script>
+
+{% endblock %}
